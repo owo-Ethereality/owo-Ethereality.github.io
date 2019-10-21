@@ -37,7 +37,8 @@
 		<div id="myweb">
 			<img id="center" src="https://a4.att.hudong.com/34/87/19300001248389130862871540448.jpg"  height="200" width="200" @click="showSentences" />
 			<div id="word"></div>
-			<iframe id="bgm" frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=213737&auto=1&height=32"></iframe>
+			//<iframe id="bgm" frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=213737&auto=1&height=32"></iframe>
+			<video id="bgm" src="http://www.sundxs.com/test.mp4" controls width="400px" heigt="400px"></video>
 		</div>
 		<script>
 			var myApp = new Vue({
@@ -50,7 +51,7 @@
 						oImg.style.display = "none";
 						var oDiv = document.getElementById("word");
 						var oMusic = document.getElementById("bgm");
-						oMusic.style.volume = 1;
+						oMusic.volume = 0.1;
 
 						var content = "&&&&&&红藕香残玉簟秋。&" +
 										"轻解罗裳，独上兰舟。&" +
