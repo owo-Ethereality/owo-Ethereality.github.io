@@ -67,7 +67,7 @@
 								now += (content.charAt(index) == '&'? "<br/>" : content.charAt(index));
 								++index;
 							}
-							oDiv.innerHTML = ((index < 8 || index == len || index % 7 < 2)? now : now + "_");
+							oDiv.innerHTML = ((index == len || index % 7 < 2)? now : now + "_");
 						},100);
 						
 						setTimeout(function() {
