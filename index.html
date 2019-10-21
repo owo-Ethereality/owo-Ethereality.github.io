@@ -57,9 +57,7 @@
 				el: "#myweb",
 				data: {
 					snowsBlue: [...Array(40).fill(0)],
-					snowsWhite: [...Array(20).fill(0)],
-					maxWidth: 750,
-					maxHeight: 2000
+					snowsWhite: [...Array(20).fill(0)]
 				},
 				onLoad: function() {
 				},
@@ -73,6 +71,8 @@
 						
 						var firstTime = true;
 						setInterval(function() {
+							var maxWidth = 660;
+							var maxHeight = 520;
 							for(var i = 0;i < 40;++i) {
 								var flag = Math.random();
 								var oSnow = document.getElementById("snow1_" + i);
@@ -82,7 +82,7 @@
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 80 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 80 + "%";
 								}
-								else if(oSnow.offserLeft > this.maxWidth || oSnow.offserTop > this.maxHeight){
+								else if(oSnow.offserLeft > maxWidth || oSnow.offserTop > maxHeight){
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 10 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 5 + "%";
 								}
@@ -97,7 +97,7 @@
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 80 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 80 + "%";
 								}
-								else if(oSnow.offserLeft > this.maxWidth || oSnow.offserTop > this.maxHeight){
+								else if(oSnow.offserLeft > maxWidth || oSnow.offserTop > maxHeight){
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 10 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 5 + "%";
 								}
@@ -115,7 +115,7 @@
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 80 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 80 + "%";
 								}
-								else if(oSnow.offserLeft > this.maxWidth || oSnow.offserTop > this.maxHeight){
+								else if(oSnow.offserLeft > maxWidth || oSnow.offserTop > maxHeight){
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 10 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 5 + "%";
 								}
