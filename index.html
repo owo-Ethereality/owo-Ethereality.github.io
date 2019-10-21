@@ -1,44 +1,75 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <title>JS鼠标提示框</title>
-        <meta charset="utf-8">
-		<style type="text/css">
-			.div0 {
-				float:left;
+    <head>
+        <title>vue.js</title>
+        <meta charset="utf-8" />
+		<style>
+			* {
+				margin:0;
+				padding:0;
 			}
-			#div2 {
-				width:200px;
-				height:100px;
-				background-color:#CCCCCC;
-				border:1px solid;
-				display:none;
+			#div {
+				color:#FF0000;
+				font-size:320px;
+				font-family:Microsoft YaHei;
 			}
 		</style>
-		<script>
-			window.onload = function()
-			{
-				var oDiv1 = document.getElementById("div1");
-				var oDiv2 = document.getElementById("div2");
-				oDiv1.onmouseover = function() {
-					oDiv2.style.display = "block";
-				}
-				oDiv2.onmouseout = function() {
-					oDiv2.style.display = "none";
-				}
-			}
-		</script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
     </head>
     <body>
-		<div>
-			<div>
-				<input type="checkbox" class="div0">
-				<div id="div1" class="div0">自动登录</div>
-			</div>
-			<br>
-			<div id="div2" style="display: none;">
-				为了您的信息安全，请不要在公共电脑上选择此项
-			</div>
+		<div id="myapp">
+			{{ message }}
+			<br/>
+			<!-- filter用于格式化数据 -->
+			{{ message | doubleText }}
+			<!-- v-on:被简写作@(v-on:click="btnClick") -->
+			<button id="btn" @click="btnClick()">别点我</button>
+			<br/><br/>
+			<div id="div" v-if="flag">哼</div>
+			<ul>
+				<li v-for="(item,index) in items">
+					{{ item.name }}的价格: {{ item.price }}元
+					<button @click="increasePrice(item)">涨价1元</button>
+				<li>
+			</ul>
 		</div>
-	</body>
+		<script>
+			var myApp = new Vue({
+				el:"#myapp",
+				data:{
+					flag:false,
+					message:"Hello Vue.js",
+					items:[
+						{name:"苹果",price:2},
+						{name:"香蕉",price:3},
+						{name:"橘子",price:1}
+					]
+						
+				},
+				methods:{
+					btnClick:function() {
+						var oBtn = document.getElementById("btn");
+						if(this.message == "Hello Vue.js") {
+							this.flag = true;
+							this.message = "点我干嘛";
+							oBtn.innerHTML = "你再点我一下试试？";
+						}
+						else {
+							this.flag = false;
+							this.message = "Hello Vue.js";
+							oBtn.innerHTML = "别点我";
+						}
+					},
+					increasePrice:function(item) {
+						++item.price;
+					}
+				},
+				filters:{
+					doubleText:function(value) {
+						return value + " " + value + "!";
+					}
+				}
+			});
+		</script>
+    </body>
 </html>
