@@ -12,6 +12,7 @@
 				color: #FFFFFF;
 				background-color: #000000;
 				font-family: Microsoft YaHei;
+				width: 100%;
 				height: 600px;
 			}
 			#center {
@@ -35,7 +36,6 @@
 				height: 0;
 			}
 			.snows1,.snows2,.snows3 {
-				width:30px;
 				display: none;
 				position: fixed;
 			}
@@ -71,14 +71,14 @@
 						
 						var firstTime = true;
 						setInterval(function() {
-							var maxWidth = 660;
-							var maxHeight = 520;
+							var maxWidth = 860;
+							var maxHeight = 820;
 							for(var i = 0;i < 40;++i) {
 								var flag = Math.random();
 								var oSnow = document.getElementById("snow1_" + i);
 								oSnow.style.display = "block";
 								if(firstTime || flag < 0.3) {
-									oSnow.style.width = Math.floor(Math.random() * 19260817) % 15 + 5 + "px";
+									oSnow.style.width = Math.floor(Math.random() * 19260817) % 5 + 5 + "px";
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 80 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 80 + "%";
 								}
@@ -93,7 +93,7 @@
 								var oSnow = document.getElementById("snow2_" + i);
 								oSnow.style.display = "block";
 								if(firstTime || flag < 0.4) {
-									oSnow.style.width = Math.floor(Math.random() * 19260817) % 15 + 5 + "px";
+									oSnow.style.width = Math.floor(Math.random() * 19260817) % 5 + 5 + "px";
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 80 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 80 + "%";
 								}
@@ -111,7 +111,7 @@
 								var oSnow = document.getElementById("snow3_" + i);
 								oSnow.style.display = "block";
 								if(firstTime || flag < 0.2) {
-									oSnow.style.width = Math.floor(Math.random() * 19260817) % 15 + 5 + "px";
+									oSnow.style.width = Math.floor(Math.random() * 19260817) % 5 + 5 + "px";
 									oSnow.style.left = Math.floor(Math.random() * 19260817) % 80 + "%";
 									oSnow.style.top = Math.floor(Math.random() * 19260817) % 80 + "%";
 								}
