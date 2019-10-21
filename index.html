@@ -1,73 +1,45 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>vue.js</title>
-        <meta charset="utf-8" />
+        <title>Welcome</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
 		<style>
 			* {
 				margin:0;
 				padding:0;
 			}
-			#div {
-				color:#FF0000;
-				font-size:320px;
-				font-family:Microsoft YaHei;
+			div {
+				color: #FFFFFF;
+				background-color: #000000;
+				font-size: 40px;
+				font-family: Microsoft YaHei;
+				height: 750px;
+			}
+			.center {
+				display: block;
+				text-align: center;
+				margin: 0 auto;
+				padding: 70px;
 			}
 		</style>
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
     </head>
     <body>
-		<div id="myapp">
-			{{ message }}
-			<br/>
-			<!-- filter用于格式化数据 -->
-			{{ message | doubleText }}
-			<!-- v-on:被简写作@(v-on:click="btnClick") -->
-			<button id="btn" @click="btnClick()">别点我</button>
-			<br/><br/>
-			<div id="div" v-if="flag">哼</div>
-			<ul>
-				<li v-for="(item,index) in items">
-					{{ item.name }}的价格: {{ item.price }}元
-					<button @click="increasePrice(item)">涨价1元</button>
-				<li>
-			</ul>
+		<div id="myweb">
+			<img class="center" src="https://a4.att.hudong.com/34/87/19300001248389130862871540448.jpg"  height="200" width="200" />
 		</div>
 		<script>
 			var myApp = new Vue({
-				el:"#myapp",
+				el:"#myweb",
 				data:{
-					flag:false,
-					message:"Hello Vue.js",
-					items:[
-						{name:"苹果",price:2},
-						{name:"香蕉",price:3},
-						{name:"橘子",price:1}
-					]
+					
 						
 				},
 				methods:{
-					btnClick:function() {
-						var oBtn = document.getElementById("btn");
-						if(this.message == "Hello Vue.js") {
-							this.flag = true;
-							this.message = "点我干嘛";
-							oBtn.innerHTML = "你再点我一下试试？";
-						}
-						else {
-							this.flag = false;
-							this.message = "Hello Vue.js";
-							oBtn.innerHTML = "别点我";
-						}
-					},
-					increasePrice:function(item) {
-						++item.price;
-					}
+					
 				},
 				filters:{
-					doubleText:function(value) {
-						return value + " " + value + "!";
-					}
+					
 				}
 			});
 		</script>
