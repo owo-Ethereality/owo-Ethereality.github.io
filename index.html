@@ -1,7 +1,75 @@
-# owo-Ethereality.github.io
-
-
-This is a short introduction
-
-
-For any information, contact me at ethereality@vip.qq.com
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vue.js</title>
+        <meta charset="utf-8" />
+		<style>
+			* {
+				margin:0;
+				padding:0;
+			}
+			#div {
+				color:#FF0000;
+				font-size:320px;
+				font-family:Microsoft YaHei;
+			}
+		</style>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+		<div id="myapp">
+			{{ message }}
+			<br/>
+			<!-- filter用于格式化数据 -->
+			{{ message | doubleText }}
+			<!-- v-on:被简写作@(v-on:click="btnClick") -->
+			<button id="btn" @click="btnClick()">别点我</button>
+			<br/><br/>
+			<div id="div" v-if="flag">哼</div>
+			<ul>
+				<li v-for="(item,index) in items">
+					{{ item.name }}的价格: {{ item.price }}元
+					<button @click="increasePrice(item)">涨价1元</button>
+				<li>
+			</ul>
+		</div>
+		<script>
+			var myApp = new Vue({
+				el:"#myapp",
+				data:{
+					flag:false,
+					message:"Hello Vue.js",
+					items:[
+						{name:"苹果",price:2},
+						{name:"香蕉",price:3},
+						{name:"橘子",price:1}
+					]
+						
+				},
+				methods:{
+					btnClick:function() {
+						var oBtn = document.getElementById("btn");
+						if(this.message == "Hello Vue.js") {
+							this.flag = true;
+							this.message = "点我干嘛";
+							oBtn.innerHTML = "你再点我一下试试？";
+						}
+						else {
+							this.flag = false;
+							this.message = "Hello Vue.js";
+							oBtn.innerHTML = "别点我";
+						}
+					},
+					increasePrice:function(item) {
+						++item.price;
+					}
+				},
+				filters:{
+					doubleText:function(value) {
+						return value + " " + value + "!";
+					}
+				}
+			});
+		</script>
+    </body>
+</html>
