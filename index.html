@@ -26,7 +26,7 @@
 			#word {
 				font-size: 18px;
 				margin: 0 auto;
-				padding: 70px;
+				padding: 170px;
 				display: block;
 				text-align: center;
 			}
@@ -49,19 +49,26 @@
 						oImg.style.display = "none";
 						var oDiv = document.getElementById("word");
 
-						var content = "谁道闲情抛掷久?&每到春来，惆怅还依旧。&日日花前常病酒，不辞镜里朱颜瘦。&河畔青芜堤上柳。&为问新愁，何事年年有？&独立小桥风满袖，平林新月人归后。";
+						var content = "红藕香残玉簟秋。&" +
+										"轻解罗裳，独上兰舟。&" +
+										"云中谁寄锦书来？&" +
+										"雁字回时，月满西楼。&&&" +
+										"花自飘零水自流，&" +
+										"一种相思，两处闲愁。&" +
+										"此情无计可消除，&" +
+										"才下眉头，却上心头。";
+						var len = content.length;
 						var now = "";
 						var index = 0;
-						var len = content.length;
 						window.setInterval(function() {
-							//var rand =  new Date().getSeconds() * 19260817 % 3 + 1;
-							//var temp = content.slice(index,index + 1).replace("&","<br>");
-							if(index < len) {
-								now += (content.charAt(index) == "&"? "<br>":content.charAt(index));
-								oDiv.innerHTML = ( index == len - 1 ? now : now + "_" );
+							var step =  new Date().getSeconds() * 19260817 % 2 + 1;
+							if(index + step > len)step = len - index;
+							while(step--)	{
+								now += (content.charAt(index) == '&'? "<br/>" : content.charAt(index));
+								++index;
 							}
-							index += 1;
-						},100);
+							oDiv.innerHTML = (index == len? now : now + "_");
+						},180);
 					}
 				},
 				filters:{
