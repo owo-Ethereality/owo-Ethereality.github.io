@@ -49,7 +49,7 @@
 						oImg.style.display = "none";
 						var oDiv = document.getElementById("word");
 
-						var content = "红藕香残玉簟秋。&" +
+						var content = "&&&&&&红藕香残玉簟秋。&" +
 										"轻解罗裳，独上兰舟。&" +
 										"云中谁寄锦书来？&" +
 										"雁字回时，月满西楼。&&&" +
@@ -60,15 +60,19 @@
 						var len = content.length;
 						var now = "";
 						var index = 0;
-						window.setInterval(function() {
+						var oTimer = setInterval(function() {
 							var step =  new Date().getSeconds() * 19260817 % 2 + 1;
 							if(index + step > len)step = len - index;
 							while(step--)	{
 								now += (content.charAt(index) == '&'? "<br/>" : content.charAt(index));
 								++index;
 							}
-							oDiv.innerHTML = (index == len? now : now + "_");
+							oDiv.innerHTML = ((index < 8 || index == len || index % 7 < 2)? now : now + "_");
 						},180);
+						
+						setTimeout(function() {
+							clearInterval(oTimer);
+						},15000);
 					}
 				},
 				filters:{
