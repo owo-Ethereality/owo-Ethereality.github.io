@@ -13,30 +13,57 @@
 				background-color: #000000;
 				font-size: 40px;
 				font-family: Microsoft YaHei;
-				height: 400px;
+				height: 650px;
 			}
-			.center {
-				display: block;
-				text-align: center;
+			#center {
+				width:336px;
+				height:280px;
+				left:50%;
+				top:50%;
+				margin-left:-168px;
+				margin-top:-140px;
+				position:fixed;
+			}
+			#word {
+				font-size: 20px;
 				margin: 0 auto;
 				padding: 70px;
+				display: block;
+				text-align: center;
 			}
 		</style>
 		<script src="https://unpkg.com/vue/dist/vue.js"></script>
     </head>
     <body>
 		<div id="myweb">
-			<img class="center" src="https://a4.att.hudong.com/34/87/19300001248389130862871540448.jpg"  height="200" width="200" />
+			<img id="center" src="https://a4.att.hudong.com/34/87/19300001248389130862871540448.jpg"  height="200" width="200" @click="showSentences" />
+			<div id="word"></div>
 		</div>
 		<script>
 			var myApp = new Vue({
-				el:"#myweb",
+				el: "#myweb",
 				data:{
-					
-						
 				},
 				methods:{
-					
+					showSentences: function() {
+						var oImg = document.getElementById("center");
+						oImg.style.display = "none";
+						var oDiv = document.getElementById("word");
+
+						var content = "谁道闲情抛掷久?&每到春来，惆怅还依旧。&日日花前常病酒，不辞镜里朱颜瘦。&河畔青芜堤上柳。&为问新愁，何事年年有？&独立小桥风满袖，平林新月人归后。";
+						var now = "";
+						var index = 0;
+						var len = content.length;
+						window.setInterval(function() {
+							//var rand =  new Date().getSeconds() * 19260817 % 3 + 1;
+							//var temp = content.slice(index,index + 1).replace("&","<br>");
+							if(index < len) {
+								now += (content.charAt(index) == "&"? "<br>":content.charAt(index));
+								oDiv.innerHTML = ( index == len - 1 ? now : now + "_" );
+							}
+							index += 1;
+						},100);
+					}
 				},
 				filters:{
 					
